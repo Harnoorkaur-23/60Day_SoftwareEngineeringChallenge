@@ -1,0 +1,22 @@
+def climbStairs(n):
+  # Base cases: if 1 or 2 steps, the answer is n
+  if n <= 2:
+    return n
+
+  # Start with the answers for 1 step and 2 steps
+  prev_1 = 1  # ways for n = 1
+  prev_2 = 2  # ways for n = 2
+
+  # Loop from 3 up to n
+  for i in range(3, n + 1):
+    current = prev_1 + prev_2  # Add the last two values
+    prev_1 = prev_2  # Move forward
+    prev_2 = current  # Move forward
+
+  return prev_2
+
+
+# Example usage:
+print(climbStairs(2))  # Output: 2
+print(climbStairs(3))  # Output: 3
+print(climbStairs(5))  # Output: 8
